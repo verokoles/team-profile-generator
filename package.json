@@ -1,7 +1,6 @@
 {
   "name": "team-profile-generator",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -14,5 +13,15 @@
   "dependencies": {
     "inquirer": "^8.2.2",
     "jest": "^27.5.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verokoles/team-profile-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/verokoles/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/verokoles/team-profile-generator#readme",
+  "description": ""
 }
