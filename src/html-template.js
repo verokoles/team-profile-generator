@@ -2,9 +2,9 @@
 //  bootstrap doc for image, headers and card bodies, unordered lists
 const generateTeam = team => {
 
-// html portion for manager(s)
-const generateManager = manager => {
-    return `
+    // html portion for manager(s)
+    const generateManager = manager => {
+        return `
     <div class="card employee-card">
     <div class="card-header">
     <h2 class="card-title">${manager.getName()}</h2>
@@ -19,10 +19,10 @@ const generateManager = manager => {
     </div>
     </div>
     `;
-};
-// html portion for engineer(s)
-const generateEngineer = engineer => {
-    return `
+    };
+    // html portion for engineer(s)
+    const generateEngineer = engineer => {
+        return `
     <div class="card employee-card">
 <div class="card-header">
 <h2 class="card-title">${engineer.getName()}</h2>
@@ -38,11 +38,11 @@ const generateEngineer = engineer => {
 </div>
 `;
 
-};
+    };
 
-// html portion for intern(s)
-const generateIntern = intern => {
-    return `
+    // html portion for intern(s)
+    const generateIntern = intern => {
+        return `
     <div class="card employee-card">
 <div class="card-header">
 <h2 class="card-title">${intern.getName()}</h2>
@@ -58,5 +58,22 @@ const generateIntern = intern => {
 </div>
 `;
 };
-//generate whole HTML page with team
-const html= [];
+    //generate whole HTML page with team
+    const html = [];
+
+    html.push(employees.filter(employee => employee.getRole() === "Manager")
+        .map(manager => generateManager(manager))
+    );
+    html.push(team
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineer(engineer))
+        .join("")
+    );
+    html.push(team
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => generateIntern(intern))
+        .join("")
+    );
+
+    return html.join("");
+))
