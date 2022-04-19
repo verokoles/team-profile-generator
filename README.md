@@ -5,7 +5,8 @@
   > ## generate a list of employees on a team using Node in the command line
      - run tests for employees, engineers, interns, and manager(s).
      - an HTML is generated with IDs of all employees, along with names, roles, and/or email, Github usernames, schools, office numbers.
-     ![HTML generated](team-html.png)
+     
+   ![HTML generated](team-html.png)
 
 
 
