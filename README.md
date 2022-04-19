@@ -5,6 +5,7 @@
   > ## generate a list of employees on a team using Node in the command line
      - run tests for employees, engineers, interns, and manager(s).
      - an HTML is generated with IDs of all employees, along with names, roles, and/or email, Github usernames, schools, office numbers.
+     ![HTML generated](team-html.png)
 
 
 
@@ -30,6 +31,12 @@
      ```
      ```
      npm i jest
+     ```
+     
+     To run NODE:
+     
+     ```
+     node index.js
      ```
 
 
@@ -79,4 +86,4 @@ As shown below, all tests can be run together using 'npm run test':
 
 
 
-  [link to README tutorial video](https://drive.google.com/file/d/1s66xWH3goYwT6oh8B_IP8e2ty5ZHu6ap/view)
+  [link to README tutorial video](https://drive.google.com/file/d/1IJNUEvzrQTFY1FLc3YM2U49ZVSUx2MzS/view)
