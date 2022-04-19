@@ -1,6 +1,7 @@
 // html print for team card
 //  bootstrap doc for image, headers and card bodies, unordered lists
 const generateTeam = team => {
+    console.log('testing');
 
     // html portion for manager(s)
     const generateManager = manager => {
@@ -32,7 +33,7 @@ const generateTeam = team => {
 <ul class="list group">
 <li class="list-group-item">ID:${engineer.getId()}</li>
 <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}"></a></li>
-<li class="list-group-item">Github:  <a href="https://github.com/${engineer.getgithubUser()}"> target="_blank" rel="noopener noreferrer">${engineer.github}</a></li>
+<li class="list-group-item">Github:  <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="noopener noreferrer">${engineer.github}</a></li>
 </ul>
 </div>
 </div>
@@ -57,11 +58,11 @@ const generateTeam = team => {
 </div>
 </div>
 `;
-};
+    };
     //generate whole HTML page with team
     const html = [];
 
-    html.push(employees.filter(employee => employee.getRole() === "Manager")
+    html.push(team.filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManager(manager))
     );
     html.push(team
@@ -76,4 +77,6 @@ const generateTeam = team => {
     );
 
     return html.join("");
-))
+}
+
+module.exports = generateTeam;

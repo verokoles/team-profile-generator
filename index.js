@@ -7,7 +7,7 @@ const Intern = require('./lib/Intern');
 const generateHTML = require('./src/html-template');
 
 const DIST_DIR = path.resolve(__dirname);
-const distPath = path.join(DIST__DIR, 'index.html');
+const distPath = path.join(DIST_DIR, 'index.html');
 const render = require('./src/html-template.js')
 
 const employees = [];
@@ -41,8 +41,10 @@ function managerQuestions() {
 
         }
     ]).then((data) => {
-        const manager = new Manager(data.managerName, data.managerId, data.managerEmail, managerOfficeNumber)
+        const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOfficeNumber)
         employees.push(manager);
+
+        engineerQuestions();
 
     })
 
@@ -75,51 +77,57 @@ function engineerQuestions() {
             message: "What is the email of the engineer?",
 
         }
-}
- ]).then((data) => {
-    const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, engineerGithub)
-    employees.push(engineer);
+    ]).then((data) => {
+        const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
+        employees.push(engineer);
 
-})
-//     ])
-// }
-function internQuestions() {
-    inquirer.prompt([
-        {
-            type: 'input',
-            name: 'internName',
-            message: "What is the name of the intern?",
+        internQuestions(employees);
 
-        },
-        {
-            type: 'input',
-            name: 'internId',
-            message: "What is the ID of the intern?",
+    })
+    //     ])
+    // }
+    function internQuestions(employees) {
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'internName',
+                message: "What is the name of the intern?",
 
-        },
-        {
-            type: 'input',
-            name: 'internEmail',
-            message: "What is the email of the intern?",
+            },
+            {
+                type: 'input',
+                name: 'internId',
+                message: "What is the ID of the intern?",
 
-        },
-        {
-            type: 'input',
-            name: 'internSchool',
-            message: "What is the school the intern attended?",
+            },
+            {
+                type: 'input',
+                name: 'internEmail',
+                message: "What is the email of the intern?",
 
-        }
-        }
-    ])
-function createTeam() {
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'choice',
-            message: "Do you want to add another team member?",
-            choices: ['engineer', 'intern', 'no']
+            },
+            {
+                type: 'input',
+                name: 'internSchool',
+                message: "What is the school the intern attended?",
+
+            }
+        ])
+        .then(() => {
+            createTeam(employees);
+        })
+        function createTeam(employees) {
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'choice',
+                    message: "Do you want to add another team member?",
+                    choices: ['engineer', 'intern', 'no']
+                }
+            ]
             ).then(userChoice => {
-                switch (userChoice.memberChoice) {
+                console.log('', userChoice);
+                switch (userChoice.choice) {
                     case "Engineer":
                         addEngineer();
                         break;
@@ -127,11 +135,18 @@ function createTeam() {
                         addIntern();
                         break;
                     default:
-                        buildTeam();
+                        buildTeam(employees);
                 }
             });
+        }
+        function buildTeam(employees) {
+            console.log('test');
+           const data = generateHTML(employees)
+         fs.writeFileSync('./dist/index.html', data)
+        }
+    }
+
+    
 }
-function builtTeam() {
-    fs.writeFileSync()
-    generateHTML(employees)
-}
+managerQuestions();
+
